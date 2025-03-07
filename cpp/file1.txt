@@ -1,0 +1,13 @@
+apple
+mango
+apple
+cherry
+grapes
+fruits
+
+10
+27
+27
+47
+27
+7
