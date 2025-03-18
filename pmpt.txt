@@ -1,0 +1,5 @@
+write assignment in details in following way
+1. Introduction
+2. Point processing methods used with formulas
+3. Algorithms
+4. Conclusion
