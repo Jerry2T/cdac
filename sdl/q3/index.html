@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Facebook</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>        
+        <div class="container">
+            <h2>Facebook Registration</h2>
+            <form id=""regForm">
+                <input type="text" id="firstname" placeholder="First Name" required>
+                <div class="error" id="firstNameError"></div>
+
+                <input type="text" id="lastname" placeholder="Last Name" required>
+                <div class="error" id="lastNameError"></div>
+                
+                <input type="email" id="email" placeholder="Email" required>
+                <div class="error" id="emailError"></div>
+                
+                <input type="password" id="password" placeholder="Password" required>
+                <div class="error" id="passwordError"></div>
+
+                <label>Date of Birth</label>
+                <input type="date" id="dob" required>
+                <div class="error" id="dobError"></div>
+
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="">Select Value</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error" id="genderError"></div>
+
+                <lable>Empolyed ?</lable>
+                <input type="radio" name="employed" value="Yes">Yes 
+                <input type="radio" name="employed" value="No">No
+                <div class="error" id="employedError"></div>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

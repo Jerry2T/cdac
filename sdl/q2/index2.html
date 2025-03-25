@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Time Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .table-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h2>Railway Time Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Train Number</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Days of Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rajdhani Express</td>
+                    <td>12301</td>
+                    <td>10:00 AM</td>
+                    <td>6:00 PM</td>
+                    <td>Mon, Wed, Fri</td>
+                </tr>
+                <tr>
+                    <td>Shatabdi Express</td>
+                    <td>12001</td>
+                    <td>7:30 AM</td>
+                    <td>1:30 PM</td>
+                    <td>Daily</td>
+                </tr>
+                <tr>
+                    <td>Duronto Express</td>
+                    <td>12201</td>
+                    <td>9:00 PM</td>
+                    <td>5:00 AM</td>
+                    <td>Tue, Thu, Sat</td>
+                </tr>
+                <tr>
+                    <td>Garib Rath Express</td>
+                    <td>12909</td>
+                    <td>11:00 AM</td>
+                    <td>8:00 PM</td>
+                    <td>Mon, Fri</td>
+                </tr>
+                <tr>
+                    <td>Intercity Express</td>
+                    <td>14201</td>
+                    <td>6:00 AM</td>
+                    <td>12:00 PM</td>
+                    <td>Daily</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
