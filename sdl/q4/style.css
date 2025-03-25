@@ -1,3 +1,7 @@
-body{
+body { font-family: Arial, sans-serif; margin: 50px; }
 
-}
+.container { width: 300px; margin: auto; }
+
+input { width: 100%; padding: 8px; margin: 5px 0; }
+
+.error { color: red; font-size: 14px; }
