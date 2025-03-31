@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Data Validation</title>
+    <style>
+        .error { 
+            color: red; 
+            font-size: 0.9em; 
+        }
+        form {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 320px;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            background: #4285F4;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #3367D6;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm" novalidate>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <span class="error" id="nameError"></span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+            <span class="error" id="passwordError"></span>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required />
+            <span class="error" id="phoneError"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <span class="error" id="emailError"></span>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            <span class="error" id="addressError"></span>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        const userForm = document.getElementById('userForm');
+
+        // Validate name: non-empty and only letters with spaces allowed
+        function validateName(name) {
+            const regex = /^[A-Za-z\s]+$/;
+            return regex.test(name.trim());
+        }
+
+        // Validate password: at least 8 characters, with uppercase, lowercase, and digit
+        function validatePassword(password) {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return regex.test(password);
+        }
+
+        // Validate phone: exactly 10 digits
+        function validatePhone(phone) {
+            const regex = /^\d{10}$/;
+            return regex.test(phone);
+        }
+
+        // Validate email: basic regex for email format
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        // Validate address: non-empty
+        function validateAddress(address) {
+            return address.trim().length > 0;
+        }
+
+        userForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Clear previous errors
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('phoneError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('addressError').textContent = '';
+
+            let valid = true;
+
+            // Get form values
+            const nameVal = document.getElementById('name').value;
+            const passwordVal = document.getElementById('password').value;
+            const phoneVal = document.getElementById('phone').value;
+            const emailVal = document.getElementById('email').value;
+            const addressVal = document.getElementById('address').value;
+
+            if (!validateName(nameVal)) {
+                document.getElementById('nameError').textContent = 'Please enter a valid name (letters and spaces only).';
+                valid = false;
+            }
+
+            if (!validatePassword(passwordVal)) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters and include uppercase, lowercase, and a digit.';
+                valid = false;
+            }
+
+            if (!validatePhone(phoneVal)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid 10-digit phone number.';
+                valid = false;
+            }
+
+            if (!validateEmail(emailVal)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                valid = false;
+            }
+
+            if (!validateAddress(addressVal)) {
+                document.getElementById('addressError').textContent = 'Address cannot be empty.';
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Form submitted successfully!");
+                // Further processing can be done here.
+            }
+        });
+    </script>
+</body>
+</html>
