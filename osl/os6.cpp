@@ -54,9 +54,7 @@ void worstFit(vector<int> &blockSize, vector<int> &processSize) {
         int worstIdx = -1;
         for (int j = 0; j < m; j++) {
             if (blockSize[j] >= processSize[i]) {
-                if(worstIdx== -1 || blockSize[j]>blockSize[worstIdx]) {
-                    worstIdx = j;
-                }
+                if(worstIdx== -1 || blockSize[j]>blockSize[worstIdx]) worstIdx = j;                
             }
         }
         if (worstIdx != -1) {

@@ -37,15 +37,12 @@ bool isSafe(int processes[], int avail[], int maxm[][10], int allot[][10], int P
     printMatrices(maxm, allot, need, P, R);
     bool finish[10] = {0};    
     for (int i = 0; i < R; i++) work[i] = avail[i];
-    
     while (count < P) {
         bool found = false;
         for (int p = 0; p < P; p++) {
             if (finish[p] == 0) {
                 int j;
-                for (j = 0; j < R; j++)  {
-                    if (need[p][j] > work[j]) break;
-                }
+                for (j = 0; j < R; j++)  if (need[p][j] > work[j]) break;                
                 if (j == R ) {
                     for (int k = 0; k < R; k++) work[k] += allot[p][k];                    
                     safeSeq[count++] = p;
@@ -54,7 +51,6 @@ bool isSafe(int processes[], int avail[], int maxm[][10], int allot[][10], int P
                 }
             }
         }
-
         if (found == false) {
             cout << "\nSystem is not in a safe state\n";
             return false;
