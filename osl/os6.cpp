@@ -75,9 +75,7 @@ void bestFit(vector<int> &blockSize, vector<int> &processSize) {
         int bestIdx = -1;
         for (int j = 0; j < m; j++) {
             if (blockSize[j] >= processSize[i]) {
-                if (bestIdx == -1 || blockSize[j] < blockSize[bestIdx]) {
-                    bestIdx = j;
-                }
+                if (bestIdx == -1 || blockSize[j] < blockSize[bestIdx]) bestIdx = j;                
             }
         }
         if (bestIdx != -1) {
@@ -88,7 +86,6 @@ void bestFit(vector<int> &blockSize, vector<int> &processSize) {
     cout << "Best Fit Allocation:\n";
     printallocation(allocation, processSize, blockSize);
 }
-
 
 int main(){
     int choice, numblocks, numprocesses;
@@ -118,7 +115,6 @@ int main(){
     cout << "4. Worst Fit\n";
     cout << "Enter your choice: ";
     cin >> choice;
-
     switch(choice) {
         case 1: firstFit(blocksize, processsize);
                 break;
