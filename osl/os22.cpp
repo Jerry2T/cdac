@@ -11,30 +11,11 @@ public:
     int id, arrival_time, burst_time,       priority,       remaining_time; 
     int completion_time,  turnaround_time,  waiting_time,   response_time;   
     bool started;        
-
     Process(int id, int arrival, int burst, int priority) {
         this->id = id;              this->arrival_time = arrival;   this->burst_time = burst;
         this->priority = priority;  this->remaining_time = burst;   this->completion_time = 0;
         this->turnaround_time = 0;  this->waiting_time = 0;         this->response_time = -1;
         this->started = false;
-    }
-};
-
-struct CompareFCFS {
-    bool operator()(const Process& p1, const Process& p2) { return p1.arrival_time > p2.arrival_time; }
-};
-
-struct CompareSRTF {
-    bool operator()(const Process& p1, const Process& p2) {
-        if (p1.remaining_time == p2.remaining_time)  return p1.arrival_time > p2.arrival_time;
-        return p1.remaining_time > p2.remaining_time;
-    }
-};
-
-struct ComparePriority {
-    bool operator()(const Process& p1, const Process& p2) {
-        if (p1.priority == p2.priority)  return p1.arrival_time > p2.arrival_time;
-        return p1.priority > p2.priority;
     }
 };
 
@@ -121,8 +102,7 @@ public:
                 
                 int execute_time = min(time_quantum, processes[idx].remaining_time);
                 current_time += execute_time;
-                processes[idx].remaining_time -= execute_time;
-                
+                processes[idx].remaining_time -= execute_time;                
                 for (int i = 0; i < processes.size(); i++) {
                     if (processes[i].arrival_time > current_time - execute_time && 
                         processes[i].arrival_time <= current_time && 
@@ -275,8 +255,7 @@ public:
         
     void priorityPreemptive() {
         resetProcesses();        
-        int current_time = 0, completed = 0, prev_running = -1;
-        
+        int current_time = 0, completed = 0, prev_running = -1;        
         while (completed < processes.size()) {
             int highest_priority_idx = -1, highest_priority = numeric_limits<int>::max();            
             for (int i = 0; i < processes.size(); i++) {
@@ -334,8 +313,7 @@ public:
     void displayResults(const string& algorithm_name) {
         cout << "\n=======================================================================================" << endl;
         cout << algorithm_name << " Scheduling Results:" << endl;
-        cout << "=======================================================================================" << endl;
-        
+        cout << "=======================================================================================" << endl;        
         cout << setw(12) << "Process ID" << setw(15) << "Arrival Time" << setw(15) << "Burst Time" 
              << setw(15) << "Priority" << setw(15) << "Completion" << setw(15) << "Turnaround" 
              << setw(15) << "Waiting" << setw(15) << "Response" << endl;
