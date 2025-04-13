@@ -44,7 +44,7 @@ void FCFS(vector<Process>& proc) {
     printsfun(proc, false);
 }
 
-void SJF(vector<Process>& proc) {
+void SJF(vector<Process>& proc) {    
     int n = proc.size(), current_time = 0, completed = 0;
     vector<bool> is_completed(n, false);
 
@@ -77,7 +77,7 @@ void SJF(vector<Process>& proc) {
 }
 
 void SJFPreemptive(vector<Process>& proc) {
-    int n = proc.size();
+    int n = proc.size();   
     vector<int> remaining_time(n);
     vector<bool> is_completed(n, false);    
     for (int i = 0; i < n; i++)     remaining_time[i] = proc[i].burst_time;    
@@ -208,7 +208,7 @@ void RoundRobin(vector<Process>& proc, int quantum) {
                 q.push(i);
                 inQueue[i] = true;
             }
-        }
+        } 
         if (proc[idx].remaining_time > 0) { q.push(idx); } 
         else {
             proc[idx].completion_time = time;
