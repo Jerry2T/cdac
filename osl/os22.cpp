@@ -132,8 +132,7 @@ public:
         resetProcesses();
         int current_time = 0, completed = 0;
         while (completed < processes.size()) {
-            int shortest_idx = -1;
-            int shortest_burst = numeric_limits<int>::max();
+            int shortest_idx = -1, shortest_burst = numeric_limits<int>::max();
                         
             for (int i = 0; i < processes.size(); i++) {
                 if (processes[i].arrival_time <= current_time && processes[i].remaining_time > 0) {
