@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Sign Up/Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .container {
+      max-width: 350px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    h2 {
+      text-align: center;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .field input {
+      width: 100%;
+      padding: 8px;
+    }
+    .field button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .field button:hover {
+      background-color: #365899;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      display: none;
+    }
+    #welcomePage {
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="signupPage">
+  <h2>Sign Up</h2>
+  <div class="field">
+    <label>Username</label>
+    <input type="text" id="signupUsername">
+    <div class="error" id="signupUsernameError">Username is required.</div>
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" id="signupPassword">
+    <div class="error" id="signupPasswordError">Password must be at least 6 characters.</div>
+  </div>
+  <div class="field">
+    <button onclick="signup()">Sign Up</button>
+  </div>
+</div>
+
+<div class="container" id="loginPage" style="display:none;">
+  <h2>Login</h2>
+  <div class="field">
+    <label>Username</label>
+    <input type="text" id="loginUsername">
+    <div class="error" id="loginUsernameError">Enter your username.</div>
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" id="loginPassword">
+    <div class="error" id="loginPasswordError">Enter your password.</div>
+  </div>
+  <div class="field">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<div class="container" id="welcomePage">
+  <h2>Welcome, <span id="displayName"></span>!</h2>
+</div>
+
+<script>
+  let savedUsername = "";
+  let savedPassword = "";
+
+  function signup() {
+    const username = document.getElementById('signupUsername').value.trim();
+    const password = document.getElementById('signupPassword').value;
+
+    document.getElementById('signupUsernameError').style.display = 'none';
+    document.getElementById('signupPasswordError').style.display = 'none';
+
+    if (!username) {
+      document.getElementById('signupUsernameError').style.display = 'block';
+      return;
+    }
+    if (password.length < 6) {
+      document.getElementById('signupPasswordError').style.display = 'block';
+      return;
+    }
+
+    // Save to memory
+    savedUsername = username;
+    savedPassword = password;
+
+    // Switch to login page
+    document.getElementById('signupPage').style.display = 'none';
+    document.getElementById('loginPage').style.display = 'block';
+  }
+
+  function login() {
+    const username = document.getElementById('loginUsername').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    document.getElementById('loginUsernameError').style.display = 'none';
+    document.getElementById('loginPasswordError').style.display = 'none';
+
+    if (!username) {
+      document.getElementById('loginUsernameError').style.display = 'block';
+      return;
+    }
+    if (!password) {
+      document.getElementById('loginPasswordError').style.display = 'block';
+      return;
+    }
+
+    if (username === savedUsername && password === savedPassword) {
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('welcomePage').style.display = 'block';
+      document.getElementById('displayName').innerText = savedUsername;
+    } else {
+      alert('Incorrect username or password!');
+    }
+  }
+</script>
+
+</body>
+</html>

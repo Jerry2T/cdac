@@ -50,9 +50,7 @@ document.getElementById("regForm").addEventListener("submit", function(event){
     } else {
         document.getElementById("dobError").innerText = "";
     }
-
     if (isValid) {
         alert("Registration Successful!");
     }
-
 });

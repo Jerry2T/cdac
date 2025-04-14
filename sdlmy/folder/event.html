@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Handlers Example</title>
+  <style>
+    button, input, select {
+      margin: 10px 0;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      text-align: center;
+      line-height: 200px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Event Handlers Example</h1>
+  <button onclick="handleClick()">Click Me</button>
+  
+  <div class="box" onmouseover="handleMouseOver()">Hover over me</div>
+  <input type="text" id="myInput" oninput="handleInputChange()" placeholder="Type something...">
+  
+  <form onsubmit="handleFormSubmit(event)">
+    <input type="text" id="username" placeholder="Enter your username">
+    <button type="submit">Submit</button>
+  </form>
+
+  <input type="text" onfocus="handleFocus()" placeholder="Click to focus">
+  <select onchange="handleChange()">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+  </select>
+
+  <input type="text" onkeydown="handleKeyDown()" placeholder="Press a key">
+  <input type="text" onblur="handleBlur()" placeholder="Click away to lose focus">
+  
+  <script>
+    window.onresize = handleResize;
+    function handleResize() {
+      console.log("Window resized! New size:", window.innerWidth, "x", window.innerHeight);
+    }
+  </script>
+  
+  <div style="height: 1000px; background-color: #f1f1f1;">
+    <p>Scroll down and check the console for scroll events.</p>
+  </div>
+
+  <script>    
+    function handleClick() {
+      alert("Button was clicked!");
+    }
+
+    function handleMouseOver() {
+      alert("You hovered over the element!");
+    }
+
+    function handleInputChange() {
+      const inputValue = document.getElementById('myInput').value;
+      console.log("Input value changed to:", inputValue);
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();  // Prevent form from submitting
+      const username = document.getElementById('username').value;
+      alert("Form submitted with username: " + username);
+    }
+
+    function handleFocus() {
+      console.log("Input field is focused!");
+    }
+
+    function handleChange() {
+      const selectedOption = event.target.value;
+      alert("You selected: " + selectedOption);
+    }
+
+    function handleKeyDown(event) {
+      console.log("You pressed the key:", event.key);
+    }
+
+    function handleBlur() {
+      console.log("Input field lost focus!");
+    }
+
+    window.onscroll = function() {
+      console.log("Page scrolled! Current scroll position:", window.scrollY);
+    };
+  </script>
+</body>
+</html>
