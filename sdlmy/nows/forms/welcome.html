@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    .photos img {
+      width: 150px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .video {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="welcomeText">Welcome!</h2>
+
+  <div class="photos">
+    <img src="/workspaces/cdac/sdlmy/nows/forms/pexels-jess-vide-5232501.jpg" alt="Photo1"/>
+    <img src="/workspaces/cdac/sdlmy/nows/forms/pexels-jess-vide-5232501.jpg" alt="Photo2" />
+    <img src="/workspaces/cdac/sdlmy/nows/forms/pexels-jess-vide-5232501.jpg" alt="Photo3" />
+  </div>
+
+  <div class="video">
+    <video width="320" controls>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    document.getElementById('welcomeText').textContent = `Welcome, ${user?.username || 'Guest'}!`;
+  </script>
+</body>
+</html>

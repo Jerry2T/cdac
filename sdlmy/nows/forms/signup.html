@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: auto;
+            padding: 10;
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            text-align: center;            
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .error{
+            color:red;
+            font-size: 12px;
+            display: block;
+        }
+        input{
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width:100%;
+            box-sizing: border-box;
+        }
+        button{
+            background-color: #4CAF50;
+            color:white;
+            padding:10px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup Form</h2>
+        <form method="post">
+            
+            <label for="username">Username:
+                <input type="text" id="username" name="username" required>
+                <span id="usernameError" class="error"></span>
+            </label>
+            <br>
+            <label for="email">Email:
+                <input type="email" id="email" name="email" required>
+                <span id="emailError" class="error"></span>
+            </label>            
+            <br>
+            <label for="password">Password:
+                <input type="password" id="password" name="password" required>
+                <span id="passwordError" class="error"></span>
+            </label>
+            <br>
+            <label for="birthdate">birthdate:
+                <input type="date" id="birthdate" name="birthdate" required>
+                <span id="birthdateError" class="error"></span>
+            </label>
+            <br>
+            <button type="submit">Signup</button>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const username=document.getElementById('username');
+        const email=document.getElementById('email');
+        const password=document.getElementById('password');
+        const birthdate=document.getElementById('birthdate');
+
+        username.addEventListener('blur', validateUsername);
+        email.addEventListener('blur', validateEmail);
+        password.addEventListener('blur', validatePassword);
+        birthdate.addEventListener('blur', validateBirthdate);
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if(!validateUsername() || !validateEmail() || !validatePassword() || !validateBirthdate()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            } else {        
+                localStorage.setItem('user', JSON.stringify({
+                    username: username.value,
+                    email: email.value,
+                    password: password.value,
+                    birthdate: birthdate.value
+                }));    
+                alert("Signup successful! Redirecting to login...");
+                window.location.href = "signin.html";
+            }
+        });
+
+        function validateUsername() {
+            const errorElement = document.getElementById('usernameError');
+            if (username.value.trim() === ''){
+                errorElement.textContent = 'Username is required.';
+                return false;
+            } else if (username.value.length < 3) {
+                errorElement.textContent = 'Username must be at least 3 characters long.';
+                return false;
+            } else {
+                errorElement.textContent = '';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const errorElement = document.getElementById('emailError');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
+            if (email.value.trim() === '') {
+                errorElement.textContent = 'Email is required.';
+                return false;
+            } else if (!emailPattern.test(email.value)) {
+                errorElement.textContent = 'Invalid email format.';
+                return false;
+            } else {
+                errorElement.textContent = '';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const errorElement = document.getElementById('passwordError');
+            if (password.value.trim() === '') {
+                errorElement.textContent = 'Password is required.';
+                return false;
+            } else if (password.value.length < 6) {
+                errorElement.textContent = 'Password must be at least 6 characters long.';
+                return false;
+            } else if (!/[A-Z]/.test(password.value)) {
+                errorElement.textContent = 'Password must contain at least one uppercase letter.';
+                return false;
+            } else if (!/[0-9]/.test(password.value)) {
+                errorElement.textContent = 'Password must contain at least one Number.';
+                return false;
+            } else {
+                errorElement.textContent = '';
+                return true;
+            }
+        }
+
+        function validateBirthdate() {
+            const errorElement = document.getElementById('birthdateError');
+            const birthdateValue = new Date(birthdate.value);
+            const today = new Date();
+            if (birthdate.value.trim() === '') {
+                errorElement.textContent = 'Birthdate is required.';
+                return false;
+            } else if (birthdateValue > today) {
+                errorElement.textContent = 'Birthdate cannot be in the future.';
+                return false;
+            } else {
+                errorElement.textContent = '';
+                return true;
+            }
+        }       
+
+    </script>
+</body>
+</html>
