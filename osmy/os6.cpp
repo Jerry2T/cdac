@@ -74,7 +74,7 @@ void bestFit(vector<int> &blockSize, vector<int> &processSize) {
         int bestIdx = -1;
         for (int j = 0; j < m; j++) {
             if (blockSize[j] >= processSize[i]) {
-                if (bestIdx == -1 || blockSize[j] > blockSize[bestIdx]) {
+                if (bestIdx == -1 || blockSize[j] < blockSize[bestIdx]) {
                     bestIdx = j;
                 }
             }
