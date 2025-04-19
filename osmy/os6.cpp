@@ -91,16 +91,14 @@ void bestFit(vector<int> &blockSize, vector<int> &processSize) {
 int main() {
     int choice, numBlocks, numProcesses;
     vector<int> blockSize, processSize;    
-    cout << "Enter number of blocks: ";
-    cin >> numBlocks;
+    cout << "Enter number of blocks: ";         cin >> numBlocks;
     cout << "Enter sizes for " << numBlocks << " blocks: ";
     for (int i = 0; i < numBlocks; i++) {
-        int size;
+        int size;                           
         cin >> size;
         blockSize.push_back(size);
     }    
-    cout << "Enter number of processes: ";
-    cin >> numProcesses;
+    cout << "Enter number of processes: ";      cin >> numProcesses;
     cout << "Enter sizes for " << numProcesses << " processes: ";
     for (int i = 0; i < numProcesses; i++) {
         int size;

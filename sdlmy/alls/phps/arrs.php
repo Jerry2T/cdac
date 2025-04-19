@@ -6,7 +6,6 @@
   <title>PHP Array Example</title>
 </head>
 <body>
-
   <h1>PHP Array: Sort and Sum</h1>
   <form method="post">
     <label for="numbers">Enter numbers (comma-separated):</label>
@@ -19,7 +18,6 @@
       $input = $_POST['numbers'];
       $numbers = explode(',', $input);      
       $numbers = array_map('intval', $numbers);      
-      
       sort($numbers);   
       $sum = array_sum($numbers);
       

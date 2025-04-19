@@ -43,11 +43,9 @@ class Triangle extends Shape {
 // Square class inherits Shape
 class Square extends Shape {
     private $side;
-
     public function __construct($side) {
         $this->side = $side;
     }
-
     public function calculateArea() {
         return $this->side * $this->side;
     }
@@ -56,11 +54,9 @@ class Square extends Shape {
 // Circle class inherits Shape
 class Circle extends Shape {
     private $radius;
-
     public function __construct($radius) {
         $this->radius = $radius;
     }
-
     public function calculateArea() {
         return pi() * $this->radius * $this->radius;
     }
@@ -92,8 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<script>
-// JavaScript to show input fields based on selected shape
+<script
 document.querySelectorAll('input[name="shape"]').forEach(function (element) {
     element.addEventListener('change', function () {
         const shape = this.value;
