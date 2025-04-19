@@ -36,7 +36,6 @@
     <option value="option2">Option 2</option>
     <option value="option3">Option 3</option>
   </select>
-
   <input type="text" onkeydown="handleKeyDown()" placeholder="Press a key">
   <input type="text" onblur="handleBlur()" placeholder="Click away to lose focus">
   
@@ -52,13 +51,9 @@
   </div>
 
   <script>    
-    function handleClick() {
-      alert("Button was clicked!");
-    }
+    function handleClick() { alert("Button was clicked!");  }
 
-    function handleMouseOver() {
-      alert("You hovered over the element!");
-    }
+    function handleMouseOver() {alert("You hovered over the element!");}
 
     function handleInputChange() {
       const inputValue = document.getElementById('myInput').value;
@@ -71,22 +66,16 @@
       alert("Form submitted with username: " + username);
     }
 
-    function handleFocus() {
-      console.log("Input field is focused!");
-    }
+    function handleFocus() {console.log("Input field is focused!"); }
 
     function handleChange() {
       const selectedOption = event.target.value;
       alert("You selected: " + selectedOption);
     }
 
-    function handleKeyDown(event) {
-      console.log("You pressed the key:", event.key);
-    }
+    function handleKeyDown(event) { console.log("You pressed the key:", event.key); }
 
-    function handleBlur() {
-      console.log("Input field lost focus!");
-    }
+    function handleBlur() { console.log("Input field lost focus!"); }
 
     window.onscroll = function() {
       console.log("Page scrolled! Current scroll position:", window.scrollY);
