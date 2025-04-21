@@ -1,0 +1,9 @@
+apple
+cherry
+apple
+121
+47
+27
+7
+1
+banana
