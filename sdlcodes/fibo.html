@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Fibonacci Sequence</h1>
+        <p>Enter a number to see the Fibonacci sequence up to that number:</p>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button id="generateButton">Generate</button>
+        <div id="result">
+            <h2>Result:</h2>
+            <p id="fibonacciOutput">
+                <!-- Fibonacci sequence will be displayed here -->
+            </p>
+        </div>
+        <script>
+            document.getElementById('generateButton').addEventListener('click', function() {
+                const number = parseInt(document.getElementById('numberInput').value);
+                let fib = [0, 1];
+                for (let i = 2; i < number; i++) {
+                    fib[i] = fib[i - 1] + fib[i - 2];
+                }
+                document.getElementById('fibonacciOutput').innerText = fib.slice(0, number).join(', ');
+            });
+        </script>
+</body>
+</html>

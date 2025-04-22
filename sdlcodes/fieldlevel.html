@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facebook</title>
+  <style>
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .field input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .field button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .field button:hover {
+      background-color: #365899;
+    }
+    .error {
+      color: red;
+      display: none;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Facebook</h2>
+  <form id="fbForm" onsubmit="return validateForm()">
+    <div class="field">
+      <label>First Name</label>
+      <input type="text" id="firstName">
+      <div class="error" id="firstNameError">First name is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email">
+      <div class="error" id="emailError">Email is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Phone</label>
+      <input type="number" id="phone">
+      <div class="error" id="phoneError">Phone is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Birthdate</label>
+      <input type="date" id="birthdate">
+      <div class="error" id="birthdateError">Date is required.</div>
+    </div>
+
+    <div class="field">
+      <label>New Password</label>
+      <input type="password" id="password">
+      <div class="error" id="passwordError">Password must be at least 6 characters.</div>
+    </div>
+
+    <div class="field">
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    const errorElements = document.querySelectorAll('.error');
+    errorElements.forEach(element => element.style.display = 'none');
+
+    const isFirstNameValid = validateFirstName();
+    const isEmailValid = validateEmail();
+    const isPhoneValid = validatePhone();
+    const isBirthdateValid = validateBirthdate();
+    const isPasswordValid = validatePassword();
+    return isFirstNameValid && isEmailValid && isPhoneValid && isBirthdateValid && isPasswordValid;
+  }
+
+  function validateFirstName() {
+    const firstName = document.getElementById('firstName').value.trim();
+    if (!firstName) {
+      showError('firstName', 'First name is required.');
+      return false;
+    }
+    return true;
+  }
+
+  function validateEmail() {
+    const email = document.getElementById('email').value.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
+    if (!email) {
+      showError('email', 'Email is required.');
+      return false;
+    } else if (!emailRegex.test(email)) {
+      showError('email', 'Please enter a valid email address.');
+      return false;
+    }
+    return true;
+  }
+
+  function validatePhone() {
+    const phone = document.getElementById('phone').value.trim();
+    if (!phone) {
+      showError('phone', 'Phone is required.');
+      return false;
+    } else if (phone.length < 10) {
+      showError('phone', 'Please enter a valid phone number.');
+      return false;
+    }
+    return true;
+  }
+
+  function validateBirthdate() {
+    const birthdate = document.getElementById('birthdate').value;
+    const today = new Date();
+    const enteredDate = new Date(birthdate);
+    if (!birthdate) {
+      showError('birthdate', 'Date is required.');
+      return false;
+    } else if (enteredDate > today) {
+      showError('birthdate', 'Birthdate cannot be in the future.');
+      return false;
+    }
+    return true;
+  }
+
+  function validatePassword() {
+    const password = document.getElementById('password').value;
+    if (!password) {
+      showError('password', 'Password is required.');
+      return false;
+    } else if (password.length < 6) {
+      showError('password', 'Password must be at least 6 characters.');
+      return false;
+    }
+    return true;
+  }
+
+  function showError(fieldId, message) {
+    const errorElement = document.getElementById(fieldId + 'Error');
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+  }
+  
+  document.getElementById('firstName').addEventListener('blur', validateFirstName);
+  document.getElementById('email').addEventListener('blur', validateEmail);
+  document.getElementById('phone').addEventListener('blur', validatePhone);
+  document.getElementById('birthdate').addEventListener('blur', validateBirthdate);
+  document.getElementById('password').addEventListener('blur', validatePassword);
+</script>
+
+</body>
+</html>

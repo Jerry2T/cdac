@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TY Time Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .subject-cell {
+      font-weight: bold;
+    }
+
+    abbr[title] {
+      border-bottom: 1px dotted;
+      cursor: help;
+      position: relative;
+    }
+
+    abbr[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      background: #333;
+      color: #fff;
+      border-radius: 3px;
+      padding: 4px 8px;
+      white-space: nowrap;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 4px;
+      z-index: 10;
+    }
+
+    caption {
+      caption-side: bottom;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Third Year Time Table</h1>
+
+  <table>
+    <tr>
+      <th>Day</th>
+      <th>9:00 - 10:00</th>
+      <th>10:00 - 11:00</th>
+      <th>11:00 - 12:00</th>
+      <th>12:00 - 1:00</th>
+    </tr>
+
+    <tr>
+      <td>Monday</td>
+      <td class="subject-cell"><abbr title="Operating Systems">OS</abbr> (DR)</td>
+      <td class="subject-cell"><abbr title="Computer Networks">CN</abbr> (MP)</td>
+      <td class="subject-cell"><abbr title="Database Management Systems">DBMS</abbr> (SK)</td>
+      <td class="subject-cell"><abbr title="Web Technologies">WT</abbr> (AK)</td>
+    </tr>
+
+    <tr>
+      <td>Tuesday</td>
+      <td class="subject-cell"><abbr title="Software Engineering">SE</abbr> (RS)</td>
+      <td class="subject-cell"><abbr title="Operating Systems">OS</abbr> (DR)</td>
+      <td class="subject-cell"><abbr title="Web Technologies">WT</abbr> (AK)</td>
+      <td class="subject-cell"><abbr title="Computer Networks">CN</abbr> (MP)</td>
+    </tr>
+
+    <tr>
+      <td>Wednesday</td>
+      <td class="subject-cell"><abbr title="Database Management Systems">DBMS</abbr> (SK)</td>
+      <td class="subject-cell"><abbr title="Software Engineering">SE</abbr> (RS)</td>
+      <td class="subject-cell"><abbr title="Web Technologies">WT</abbr> (AK)</td>
+      <td class="subject-cell"><abbr title="Operating Systems">OS</abbr> (DR)</td>
+    </tr>
+
+    <tr>
+      <td>Thursday</td>
+      <td class="subject-cell"><abbr title="Computer Networks">CN</abbr> (MP)</td>
+      <td class="subject-cell"><abbr title="Database Management Systems">DBMS</abbr> (SK)</td>
+      <td class="subject-cell"><abbr title="Software Engineering">SE</abbr> (RS)</td>
+      <td class="subject-cell"><abbr title="Operating Systems">OS</abbr> (DR)</td>
+    </tr>
+
+    <tr>
+      <td>Friday</td>
+      <td class="subject-cell"><abbr title="Web Technologies">WT</abbr> (AK)</td>
+      <td class="subject-cell"><abbr title="Software Engineering">SE</abbr> (RS)</td>
+      <td class="subject-cell"><abbr title="Computer Networks">CN</abbr> (MP)</td>
+      <td class="subject-cell"><abbr title="Database Management Systems">DBMS</abbr> (SK)</td>
+    </tr>
+  </table>
+
+  <caption>Subject Names are followed by Faculty Initials in brackets.</caption>
+
+</body>
+</html>

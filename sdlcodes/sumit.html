@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook SignIn</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        .field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .field input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .field button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .field button:hover {
+            background-color: #365899;
+        }
+        .error {
+            color: red;
+            display: none;
+            font-size: 12px;
+        }
+        h2 {
+            text-align: center;
+            color: #4267B2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Facebook</h2>
+        <form id="fbForm" onsubmit="return validateForm()">
+            <div class="field">
+                <label>First Name</label>
+                <input type="text" id="firstName">
+                <div class="error" id="emailError">First name is required.</div>
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input type="email" id="email">
+                <div class="error" id="lastNameError">Email is required.</div>
+            </div>
+
+            <div class="field">
+                <label>Phone</label>
+                <input type="number" id="Phone">
+                <div class="error" id="emailError">Phone is required.</div>
+            </div>
+
+            <div class="field">
+                <label>Birthdate</label>
+                <input type="date" id="birthdate">
+                <div class="error" id="birthDateError">Date is required.</div>
+            </div>
+
+            <div class="field">
+                <label>New Password</label>
+                <input type="password" id="password">
+                <div class="error" id="passwordError">Password must be at least 6 characters.</div>
+            </div>
+
+            <div class="field">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm(){
+            const errors = document.querySelectorAll('.error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+            let isValid = true;
+
+            const firstName = document.getElementById('firstName').value.trim();
+            if (firstName === '') {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
+            if (email === '' || !emailRegex.test(email)) {
+                document.getElementById('lastNameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Phone validation
+            const phone = document.getElementById('Phone').value.trim();
+            if (phone === '' || phone.length < 10) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Birthdate validation
+            const birthdate = document.getElementById('birthdate').value;
+            if (birthdate === '') {
+                document.getElementById('birthDateError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Password validation
+            const password = document.getElementById('password').value;
+            if (password === '' || password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Registration successful!');                
+            }            
+            return isValid;         
+        }        
+    </script>
+</body>
+</html>
